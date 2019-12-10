@@ -29,6 +29,8 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom_styles.css">
 
+  <script src="js/formvalidators/valider.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -40,7 +42,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-dog"></i>
         </div>
@@ -52,7 +54,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -128,7 +130,7 @@
           </div>
           <div class="card-body">
             
-            <form action="modifierCategorie2.php?idCategorie=<?php echo $_GET['idCategorie']; ?>" method="POST">
+            <form onsubmit="return validate_formcat()" action="modifierCategorie2.php?idCategorie=<?php echo $_GET['idCategorie']; ?>" method="POST">
                 <div class="form-inline">
                   <div class="form-group col-md-6">
                     <input type="text" class="form-control w-100 mt-2 mb-2" name="nomCategorie" id="nomCategorie" 

@@ -32,6 +32,7 @@
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom_styles.css">
 
+  <script src="js/formvalidators/valider.js"></script>
 </head>
 
 <body id="page-top">
@@ -43,7 +44,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-dog"></i>
         </div>
@@ -55,7 +56,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -133,7 +134,7 @@
             <?php 
                 foreach($produit as $prod){
             ?>
-            <form action="modifierProduit2.php?idProduit=<?php echo $_GET['idProduit']; ?>" method="POST">
+            <form onsubmit="return validate_formprod()" action="modifierProduit2.php?idProduit=<?php echo $_GET['idProduit']; ?>&img=<?php echo $prod['imgProduit']; ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <input type="text" class="form-control mt-2 mb-2" name="libProduit" id="libProduit" value="<?php echo $prod['libProduit']; ?>">
@@ -163,7 +164,8 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control mt-2 mb-2" name="imgProduit" id="imgProduit" value="<?php echo $prod['imgProduit']; ?>">
+                  <label for="exampleFormControlFile1">Image de produit</label>
+                  <input type="file" name="fileToUpload" class="form-control-file" id="exampleFormControlFile1">
                 </div>
                 <button type="submit" class="btn btn-success mt-2">Modifier dans la base de données</button>
             </form>

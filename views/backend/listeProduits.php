@@ -29,6 +29,7 @@
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+  <script src="js/delconfirmation/delconfirm.js"></script>
 </head>
 
 <body id="page-top">
@@ -40,7 +41,7 @@
   <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-dog"></i>
       </div>
@@ -52,7 +53,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="index.php">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -175,9 +176,23 @@
                           <td><?php echo $row['prixProduit']; ?></td>
                           <td><?php echo $row['descProduit']; ?></td>
                           <td><?php echo $row['qntProduit']; ?></td>
-                          <td><a href="<?php echo $row['imgProduit']; ?>"><button class="btn btn-success">image</button></a></td>
-                          <td><a href="modifierProduit.php?idProduit=<?php echo $row['idProduit']; ?>"><button class="btn btn-success">modifier</button></a></td>
-                          <td><a href="supprimerProduit.php?idProduit=<?php echo $row['idProduit']; ?>"><button class="btn btn-success">supprimer</button></a></td>
+                          <td><a href="../prodimgs/<?php echo $row['imgProduit']; ?>"><button class="btn btn-success">image</button></a></td>
+                          <td>
+                            <a href="modifierProduit.php?idProduit=<?php echo $row['idProduit']; ?>" class="btn btn-info btn-icon-split">
+                              <span class="icon text-white-50">
+                                <i class="fas fa-fw fa-wrench"></i>
+                              </span>
+                              <span class="text">Modifier</span>
+                            </a>
+                          </td>
+                          <td>
+                          <a href="javascript:void(0);" id="dellink<?php echo $row['idProduit']; ?>" class="btn btn-danger btn-icon-split" onclick="delconfirm('<?php echo $row['idProduit']; ?>','Produit')">
+                            <span class="icon text-white-50">
+                              <i class="fas fa-trash"></i>
+                            </span>
+                            <span class="text">Suppression</span>
+                          </a>
+                          </td>
                         </tr>
                         <?php
                       }  
