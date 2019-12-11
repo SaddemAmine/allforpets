@@ -25,11 +25,11 @@
             }
         }
 
-        $produit = new produit($_GET['idProduit'], $_POST['libProduit'], $_POST['idCategorie'], $_POST['prixProduit'], $_POST['descProduit'], $_POST['qntProduit'], $_FILES["fileToUpload"]["name"]);
+        $produit = new produit($_GET['idProduit'], $_POST['libProduit'], $_POST['idCategorie'], $_POST['prixProduit'], $_POST['descProduit'], $_POST['qntProduit'], $_FILES["fileToUpload"]["name"],$_POST['featured']);
 
     }
     else{
-        $produit = new produit($_GET['idProduit'], $_POST['libProduit'], $_POST['idCategorie'], $_POST['prixProduit'], $_POST['descProduit'], $_POST['qntProduit'], $_GET['img']);
+        $produit = new produit($_GET['idProduit'], $_POST['libProduit'], $_POST['idCategorie'], $_POST['prixProduit'], $_POST['descProduit'], $_POST['qntProduit'], $_GET['img'],$_POST['featured']);
     }
     $produitOps = new produitOps();
 

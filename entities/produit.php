@@ -8,7 +8,7 @@
         private $qntProduit;
         private $imgProduit;
     
-        function __construct($idProduit, $libProduit, $idCategorie, $prixProduit, $descProduit, $qntProduit, $imgProduit){
+        function __construct($idProduit, $libProduit, $idCategorie, $prixProduit, $descProduit, $qntProduit, $imgProduit,$featured){
             $this->idProduit = $idProduit;
             $this->libProduit = $libProduit;
             $this->idCategorie = $idCategorie;
@@ -16,6 +16,7 @@
             $this->descProduit = $descProduit;
             $this->qntProduit = $qntProduit;
             $this->imgProduit = $imgProduit;
+            $this->featured = $featured;
         }
 
         function setIdProduit(){
@@ -45,6 +46,10 @@
         function setImgProduit(){
             $this->imgProduit = $imgProduit;
         }
+
+        function setFeatured(){
+            $this->featured = $featured;
+        }
     
         function getIdProduit(){
             return $this->idProduit;
@@ -72,6 +77,10 @@
 
         function getImgProduit(){
             return $this->imgProduit;
+        }
+
+        function getFeatured(){
+            return $this->featured;
         }
     }
 ?>

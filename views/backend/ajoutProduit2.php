@@ -27,7 +27,7 @@
     }
 
 
-    $produit = new produit(NULL, $_POST['libProduit'], $_POST['idCategorie'], $_POST['prixProduit'], $_POST['descProduit'], $_POST['qntProduit'], $_FILES["fileToUpload"]["name"]);
+    $produit = new produit(NULL, $_POST['libProduit'], $_POST['idCategorie'], $_POST['prixProduit'], $_POST['descProduit'], $_POST['qntProduit'], $_FILES["fileToUpload"]["name"], $_POST['featured']);
 
     $produitOps = new produitOps();
 

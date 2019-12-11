@@ -54,14 +54,14 @@
 							<?php
 								foreach($liste as $row){
 									if($row['featured']){
-									if($row['qntProduit'] <= 5)
+									if(!$row['qntProduit'])
 										echo '<div class="product-col sold-item">';
 									else
 										echo '<div class="product-col">';
 							?>
 							<div class="img-holder">
 								<?php 
-									if($row['qntProduit'] <= 5)
+									if(!$row['qntProduit'])
 										echo '<strong class="text-uppercase">sold out!</strong>';
 								?>
 								<img src="../prodimgs/<?php echo $row['imgProduit']; ?>" alt="food-img" class="img-responsive">

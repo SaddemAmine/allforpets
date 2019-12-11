@@ -1,6 +1,6 @@
 <?php
     
-    include "C:\wamp64\www\AllForPets\\entities\categorie.php"; //relative path doesn't work for some reason
+    include "../../entities/categorie.php"; //relative path doesn't work for some reason
 
     class categorieOps{
 
@@ -31,7 +31,7 @@
             }	
         }
 
-        function getCategorie($idCategorie){
+        public static function getCategorie($idCategorie){
             $sql="SELECT * FROM `categories` WHERE idCategorie = ".$idCategorie;
             $db = config::getConnexion();
             try{
@@ -45,6 +45,30 @@
 
         function getNoP($idCategorie){
             $sql="SELECT count(*) FROM `produits` WHERE `produits`.`idCategorie` = ".$idCategorie;
+            $db = config::getConnexion();
+            try{
+            $liste=$db->query($sql);
+            return $liste;
+            }
+            catch (Exception $e){
+                die('Erreur: '.$e->getMessage());
+            }
+        }
+
+        public static function getNoC(){
+            $sql="SELECT count(*) FROM `categories`";
+            $db = config::getConnexion();
+            try{
+            $liste=$db->query($sql);
+            return $liste;
+            }
+            catch (Exception $e){
+                die('Erreur: '.$e->getMessage());
+            }
+        }
+
+        public static function getTopCategories(){
+            $sql="SELECT categories.nomCategorie, count(categories.idCategorie) FROM produits JOIN categories ON categories.idCategorie = produits.idCategorie GROUP by categories.idCategorie ORDER by count(produits.idCategorie) desc";
             $db = config::getConnexion();
             try{
             $liste=$db->query($sql);

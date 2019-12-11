@@ -1,5 +1,6 @@
 <?php
 
+  include "../../core/components/components.php";
   include "../../core/config.php";
   include "../../core/categorieOps.php"; //relative paths aren't working...
 
@@ -37,85 +38,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-dog"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">AllForPets AdminSpace</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider  mb-0 mt-2">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="index.php">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        CRUD
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Ajout</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Menu des ajouts:</h6>
-            <a class="collapse-item" href="ajoutProduit1.php">Ajouter un produit</a>
-            <a class="collapse-item" href="ajoutCategorie1.html">Ajouter une catégorie</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Listes</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Les differents elements:</h6>
-            <a class="collapse-item" href="listeProduits.php">Lister les produits</a>
-            <a class="collapse-item" href="listeCategories.php">Lister les categories</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider mb-0 mt-2">
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Statistiques</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-
-    </ul>
-    <!-- End of Sidebar -->
+    <?php components::sidebar(); ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -131,15 +54,24 @@
             
             <form action="ajoutProduit2.php" method="POST" onsubmit="return validate_formprod()" enctype="multipart/form-data">
                 <div class="form-row">
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-6 mt-2 mb-2">
                     <input type="text" class="form-control mt-2 mb-2" name="libProduit" id="libProduit" placeholder="Libelle du produit">
                   </div>
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-6 mt-2 mb-2">
                     <input type="text" class="form-control mt-2 mb-2" name="prixProduit" id="prixProduit" placeholder="Prix du produit">
                   </div>
                 </div>
-                <div class="form-group">
-                  <input type="text" class="form-control mt-2 mb-2" name="descProduit" id="descProduit" placeholder="Description du produit">
+                <div class="form-row">
+                  <div class="form-group col-md-6 mt-2 mb-2">
+                    <input type="text" class="form-control mt-2 mb-2" name="descProduit" id="descProduit" placeholder="Description du produit">
+                  </div>
+                  <div class="form-group col-md-6 mt-2 mb-2">
+                    <select name="featured" id="featured" class="form-control mt-2 mb-2">
+                      <option selected value="0" disabled>Produit Recommendé</option>
+                      <option value="0">Non</option>
+                      <option value="1">Oui</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6 mt-2 mb-2">
@@ -156,9 +88,18 @@
                     </select>
                   </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="exampleFormControlFile1">Image de produit</label>
                   <input type="file" name="fileToUpload" class="form-control-file" id="exampleFormControlFile1">
+                </div> Old file input in case you need it -->
+                <div class="input-group mt-2 mb-2">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Image du produit</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" name="fileToUpload" class="custom-file-input" id="inputGroupFile01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                  </div>
                 </div>
                 <button type="submit" class="btn btn-success mt-2">Ajouter dans la base de données</button>
             </form>

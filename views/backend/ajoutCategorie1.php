@@ -1,14 +1,8 @@
 <?php
 
-    include "../../core/config.php";
-    include "../../core/categorieOps.php";
-    include "../../core/components/components.php";
-    
-    $C = new categorieOps();
-    $categorie = $C->getCategorie($_GET['idCategorie']);
+  include "../../core/components/components.php";
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,9 +23,7 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom_styles.css">
-
   <script src="js/formvalidators/valider.js"></script>
-
 </head>
 
 <body id="page-top">
@@ -53,16 +45,12 @@
           </div>
           <div class="card-body">
             
-            <form onsubmit="return validate_formcat()" action="modifierCategorie2.php?idCategorie=<?php echo $_GET['idCategorie']; ?>" method="POST">
+            <form action="ajoutCategorie2.php" method="POST" onsubmit="return validate_formcat()">
                 <div class="form-inline">
                   <div class="form-group col-md-6">
-                    <input type="text" class="form-control w-100 mt-2 mb-2" name="nomCategorie" id="nomCategorie" 
-                    <?php
-                    foreach($categorie as $cat)
-                        echo 'value="'.$cat['nomCategorie'].'">';
-                    ?>
-                    </div>
-                <button type="submit" class="btn btn-success mt-2 mb-2">Modifier dans la base de données</button>
+                    <input type="text" class="form-control w-100 mt-2 mb-2" name="nomCategorie" id="nomCategorie" placeholder="Nom de la categorie">
+                  </div>
+                <button type="submit" class="btn btn-success mt-2 mb-2">Ajouter dans la base de données</button>
             </form>
 
           </div>

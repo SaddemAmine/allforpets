@@ -8,5 +8,5 @@
 
     $liste = $categorieOps->ajouterCategorie($categorie);
 
-    header("location: ajoutCategorie1.html");
+    header("location: ajoutCategorie1.php");
 ?>

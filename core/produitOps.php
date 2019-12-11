@@ -4,7 +4,7 @@
 
     class produitOps{
         function ajouterProduit($produit){
-            $sql = "INSERT INTO `produits` (`idProduit`, `libProduit`, `idCategorie`, `prixProduit`, `descProduit`, `qntProduit`, `imgProduit`) VALUES (NULL, :libProduit, :idCategorie, :prixProduit, :descProduit, :qntProduit, :imgProduit)";
+            $sql = "INSERT INTO `produits` (`idProduit`, `libProduit`, `idCategorie`, `prixProduit`, `descProduit`, `qntProduit`, `imgProduit`, `featured`) VALUES (NULL, :libProduit, :idCategorie, :prixProduit, :descProduit, :qntProduit, :imgProduit, :featured)";
             $db = config::getConnexion();
             try{
                 $req=$db->prepare($sql);
@@ -14,6 +14,7 @@
                 $req->bindValue(':descProduit',$produit->getDescProduit());
                 $req->bindValue(':qntProduit',$produit->getQntProduit());
                 $req->bindValue(':imgProduit',$produit->getImgProduit());
+                $req->bindValue(':featured',$produit->getFeatured());
                 $req->execute();   
             }
             catch (Exception $e){
@@ -48,7 +49,7 @@
         }
 
         function modifierProduit($produit){
-            $sql = "UPDATE `produits` SET `libProduit` = :libProduit, `idCategorie` = :idCategorie, `prixProduit` = :prixProduit, `descProduit` = :descProduit, `qntProduit` = :qntProduit, `imgProduit` = :imgProduit WHERE `produits`.`idProduit` = :idProduit";
+            $sql = "UPDATE `produits` SET `libProduit` = :libProduit, `idCategorie` = :idCategorie, `prixProduit` = :prixProduit, `descProduit` = :descProduit, `qntProduit` = :qntProduit, `imgProduit` = :imgProduit, `featured` = :featured WHERE `produits`.`idProduit` = :idProduit";
             $db = config::getConnexion();
             try{
                 $req=$db->prepare($sql);
@@ -59,6 +60,7 @@
                 $req->bindValue(':descProduit',$produit->getDescProduit());
                 $req->bindValue(':qntProduit',$produit->getQntProduit());
                 $req->bindValue(':imgProduit',$produit->getImgProduit());
+                $req->bindValue(':featured',$produit->getFeatured());
                 $req->execute();   
             }
             catch (Exception $e){
@@ -77,6 +79,30 @@
             catch (Exception $e){
                     echo 'Erreur: '.$e->getMessage();
             }    
+        }
+
+        public static function nombreProduits(){
+            $sql="SELECT count(*) FROM `produits`";
+            $db = config::getConnexion();
+            try{
+            $liste=$db->query($sql);
+            return $liste;
+            }
+            catch (Exception $e){
+                die('Erreur: '.$e->getMessage());
+            }	
+        }
+
+        public static function argentsProduits(){
+            $sql="SELECT sum(prixProduit*qntProduit) FROM `produits`";
+            $db = config::getConnexion();
+            try{
+            $liste=$db->query($sql);
+            return $liste;
+            }
+            catch (Exception $e){
+                die('Erreur: '.$e->getMessage());
+            }	
         }
     }
 
