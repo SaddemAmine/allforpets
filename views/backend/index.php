@@ -32,7 +32,8 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+  
+  <script src="js/delconfirmation/delconfirm.js"></script>
 </head>
 
 <body id="page-top">
@@ -154,6 +155,12 @@
                     <i class="fas fa-fw fa-wrench"></i>
                   </span>
                   <span class="text">Modifier</span>
+                </a>
+                <a href="javascript:void(0);" id="dellink<?php echo $l['idProduit']; ?>" class="btn btn-danger btn-icon-split" onclick="delconfirm('<?php echo $l['idProduit']; ?>','Produit')">
+                  <span class="icon text-white-50">
+                    <i class="fas fa-trash"></i>
+                  </span>
+                  <span class="text">Suppression</span>
                 </a>
                 <?php
                 }

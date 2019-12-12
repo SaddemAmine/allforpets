@@ -45,7 +45,7 @@
                                 </ul>
                                 <ul class="list-unstyled account-cart">
                                     <li><a href="#"><i class="icon-user"></i><span class="hidden-xs">Se connecter</span></a></li>
-                                    <li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">Cart</span></a></li>
+                                    <li><a href="#"><i class="icon-cart"></i><span class="hidden-xs">Panier</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -174,7 +174,6 @@
                     <h6 class="collapse-header">Menu des ajouts:</h6>
                     <a class="collapse-item" href="ajoutProduit1.php">Ajouter un produit</a>
                     <a class="collapse-item" href="ajoutCategorie1.php">Ajouter une catégorie</a>
-                    <a class="collapse-item" href="ajoutPromotion.php">Ajouter une promotion</a>
                     </div>
                 </div>
                 </li>
@@ -190,7 +189,6 @@
                     <h6 class="collapse-header">Les differents elements:</h6>
                     <a class="collapse-item" href="listeProduits.php">Lister les produits</a>
                     <a class="collapse-item" href="listeCategories.php">Lister les categories</a>
-                    <a class="collapse-item" href="listePromotions.php">Lister des promotions</a>
                     </div>
                 </div>
                 </li>

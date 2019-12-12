@@ -1,4 +1,5 @@
 <?php
+
 	include "../../core/config.php";
 	include "../../core/components/components.php";
 	include "../../core/categorieOps.php";
@@ -8,12 +9,13 @@
 	$cats = $catOps->getCategories();
 	$proOps = new produitOps();
 	$listP = $proOps->getProduits();
-	$listP2 = $proOps->getProduits();
+	$listP2 = $proOps->getProduit($_GET['id']);
+
 ?>
 
 <!DOCTYPE html>
 
-<!-- Mirrored from htmlbeans.com/html/petshop/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Nov 2019 02:01:43 GMT -->
+<!-- Mirrored from htmlbeans.com/html/petshop/shop-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Nov 2019 02:01:49 GMT -->
 <head>
 	<!-- set the encoding of your site -->
 	<meta charset="utf-8">
@@ -39,59 +41,40 @@
 <body>
 	<div id="wrapper">
 		<?php components::header(); ?>
+			
 		<main id="main">
 			<section class="hero-sec bg-full" style="background-image:url(images/img33.jpg);">
 				<div class="caption">
 					<h1 class="heading text-center">Shop</h1>
 				</div>
 			</section>
-			<section class="shop-sec style1 container">
+			<section class="shop-sec detail-page container">
 				<div class="row">
 					<div class="col-xs-12">
 						<article id="content">
-							<div class="product-block">
-								<?php 
-									if(isset($_GET['id'])){	
-										foreach($listP2 as $lp2){ 
-											if($lp2['idCategorie'] == $_GET['id']){
-								?>
-								<div class="product-col">
-									<div class="img-holder">
-										<img src="../prodimgs/<?php echo $lp2['imgProduit']; ?>" alt="food-img" class="img-responsive">
-										<div class="over-holder">
-											<ul class="list-unstyled text-center share-list">
-												<li><a href="shop-detail.php?id=<?php echo $lp2['idProduit']; ?>"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-											</ul>
+							<div class="holder">
+								<div class="block">
+								<?php foreach($listP2 as $lp2){ ?>	
+									<div class="product-slider">
+										<div class="slide">
+											<img src="../prodimgs/<?php echo $lp2['imgProduit']; ?>" alt="image" class="img-responsive">
 										</div>
-									</div>
-									<div class="descrip">
-										<h3 class="heading2"><?php echo $lp2['libProduit']; ?></h3> 
-										<span class="price"><?php echo $lp2['prixProduit']." tnd"; ?></span>		
-									</div>
-									<div class="text-center">
-										<a href="shop-detail.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>add to cart</a>
 									</div>
 								</div>
-								<?php } } } else { foreach($listP2 as $lp2){?>
-									<div class="product-col">
-										<div class="img-holder">
-											<img src="../prodimgs/<?php echo $lp2['imgProduit']; ?>" alt="food-img" class="img-responsive">
-											<div class="over-holder">
-												<ul class="list-unstyled text-center share-list">
-													<li><a href="shop-detail.php?id=<?php echo $lp2['idProduit']; ?>"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-										</div>
-										<div class="descrip">
-											<h3 class="heading2"><?php echo $lp2['libProduit']; ?></h3> 
-											<span class="price"><?php echo $lp2['prixProduit']." tnd"; ?></span>		
-										</div>
-										<div class="text-center">
-											<a href="shop-detail.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i>add to cart</a>
-										</div>
-									</div>
-								<?php } } ?>
+								<div class="text-holder">
+									<h3><?php echo $lp2['libProduit']; ?></h3> 
+									<span class="price"><?php echo $lp2['prixProduit']." tnd"; ?></span>	
+									<p><?php echo $lp2['descProduit']; ?></p>	
+									<form class="select-form">
+										<fieldset>
+										    <input class="form-control" type="number" value="1" min="0" max="1000">
+										</fieldset>
+									</form>
+									<a href="cart.html" class="btn-primary lg-round text-uppercase"><i class="icon-cart"></i> add to cart</a>
+								</div>
+								<?php } ?>
 							</div>
+							
 						</article>
 						<aside id="sidebar">
 							<section class="widget">
@@ -138,5 +121,5 @@
 	<script src="js/jquery.main.js"></script>
 </body>
 
-<!-- Mirrored from htmlbeans.com/html/petshop/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Nov 2019 02:01:49 GMT -->
+<!-- Mirrored from htmlbeans.com/html/petshop/shop-detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Nov 2019 02:01:52 GMT -->
 </html>

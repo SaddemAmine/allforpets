@@ -1,6 +1,6 @@
 <?php
 
-    include "C:\wamp64\www\AllForPets\\entities\produit.php"; //relative path doesn't work for some reason
+    include "../../entities/produit.php"; //relative path doesn't work for some reason
 
     class produitOps{
         function ajouterProduit($produit){
